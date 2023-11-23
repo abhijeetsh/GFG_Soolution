@@ -1,0 +1,36 @@
+
+
+
+
+//User function Template for Java
+
+class Solution{
+     public static void swap(int array[], int l, int r) {
+        int temp = array[l];
+        array[l] = array[r];
+        array[r] = temp;
+    }
+    //Function to partition the array around the range such 
+    //that array is divided into three parts.
+    public void threeWayPartition(int array[], int a, int b)
+    {
+        // code here 
+         int n = array.length;
+        int l = 0; 
+        int r = n - 1; 
+        int i = 0; 
+
+        while (i <= r) {
+            if (array[i] < a) {
+                swap(array, i, l);
+                i++;
+                l++;
+            } else if (array[i] > b) {
+                swap(array, i, r);
+                r--;
+            } else {
+                i++;
+            }
+        }
+    }
+}
