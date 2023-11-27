@@ -1,0 +1,30 @@
+class Solution
+{
+    //Function to detect cycle using DSU in an undirected graph.
+    int p[];
+    public int detectCycle(int V, ArrayList<ArrayList<Integer>> adj)
+    {
+        // Code here
+        p=new int[V];
+        for(int i=0;i<V;i++)p[i]=i;
+        Set<String> s=new HashSet<>();
+        for(int i=0;i<adj.size();i++){
+            for(int nb:adj.get(i)){
+                int xp=find(i);
+                int yp=find(nb);
+                if(xp!=yp){
+                    p[xp]=yp;
+                    s.add(""+i+" "+nb);
+                    s.add(""+nb+" "+i);
+                }
+                else if(!s.contains(""+nb+" "+i))return 1;
+                
+            }
+        }
+        return 0;
+    }
+    int find(int v){
+        if(p[v]==v)return v;
+        return p[v]=find(p[v]);
+    }
+}
