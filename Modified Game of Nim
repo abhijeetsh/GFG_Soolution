@@ -1,0 +1,10 @@
+class Solution{
+    static int findWinner(int n, int A[]){
+        // code here
+        int x0r = 0;
+        for(int i = 0; i < n; i++)    
+            x0r ^= A[i];
+        return (x0r == 0 ? 1: (n % 2) + 1);
+    }
+}
+
