@@ -1,0 +1,25 @@
+static int minCandy(int N, int ratings[]) {
+        int[] candies = new int[N];
+        
+        Arrays.fill(candies,1);
+        
+        // traverse from left to right
+        for(int i=1;i<N;i++){
+            if(ratings[i]>ratings[i-1]){
+                candies[i]=candies[i-1]+1;
+            }
+        }      
+        // traverse from right to left
+        for(int i=N-2;i>=0;i--){
+            if(ratings[i]>ratings[i+1]){
+                candies[i]=Math.max(candies[i],candies[i+1]+1);
+            }
+        } 
+        // now count the candies
+        int cnt = 0;
+        for(int candy : candies){
+            cnt+=candy;
+        }
+        return cnt;
+        
+    }
