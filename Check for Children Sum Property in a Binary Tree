@@ -1,0 +1,18 @@
+class Solution
+{
+    //Function to check whether all nodes of a tree have the value 
+    //equal to the sum of their child nodes.
+    public static boolean solve(Node node){
+        if (node == null || (node.left == null && node.right == null))
+            return true;
+        int child=0;
+        if(node.left!=null) child+=node.left.data;
+        if(node.right!=null) child+=node.right.data;
+        if(child!=node.data) return false;
+        return solve(node.left) && solve(node.right);
+    }
+    public static int isSumProperty(Node root)
+    {
+        return solve(root)==true?1:0;
+    }
+}
