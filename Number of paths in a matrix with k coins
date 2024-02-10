@@ -1,0 +1,22 @@
+class Solution {
+    long solve(int i,int j,int k,int [][]arr,long dp[][][]){
+        if(i<0 || j<0 || k<0) return 0;
+        if(i==0 && j==0) {
+            if(k==arr[0][0]) return 1;
+            else return 0;
+        }
+        if(dp[i][j][k]!=-1) return dp[i][j][k];
+        long  left=solve(i,j-1,k-arr[i][j],arr,dp);
+        long  up=solve(i-1,j,k-arr[i][j],arr,dp);
+        return dp[i][j][k]=left+up;
+    }
+    long numberOfPath(int n, int k, int [][]arr) {
+        long dp[][][]=new long[n][n][k+1];
+        for(long[][] i:dp){
+            for(long[] j:i){
+                Arrays.fill(j,-1);
+            }
+        }
+        return solve(n-1,n-1,k,arr,dp);
+    }
+}
