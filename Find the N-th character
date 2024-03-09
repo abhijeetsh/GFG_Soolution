@@ -1,0 +1,14 @@
+  if(r==0) return s.charAt(n);
+        
+        for(int i=0;i<r;i++)
+        {
+            String temp="";
+            for(int k=0;k<=n;k++)  // run loop only till n because 0<=n<|s|
+            {
+               if(s.charAt(k)=='0') temp=temp+"01";
+               else temp=temp+"10";
+            }
+            s=temp;
+        }
+        
+        return s.charAt(n);
